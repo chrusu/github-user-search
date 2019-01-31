@@ -14,15 +14,16 @@ class App extends Component {
     }
   }
 
-  getUsers = (searchTerm) => {
+  getUsers = (searchTerm, callback) => {
     console.log('searchTerm: ', searchTerm);
     let url = `${GIT_USER_SEARCH}${searchTerm}`;
       axios.get(url)
       .then((response) => {
         // handle success
         const items = response.data.items;
-        this.setState({data: items})
-        return items;
+        callback(items);
+        // this.setState({data: items})
+        // return items;
 
       })
       .catch((error) => {
@@ -39,27 +40,23 @@ class App extends Component {
     console.log('handleMouseOver: ', selected);
   }
 
-  renderItem = (item, i, selected)=> {
-    let className = `user-item ${i===selected ? 'selected':''}`
-    console.log(className, i, selected);
+  renderContent = (item)=> {
     return (
-      <div key={i} className={className} onMouseEnter={() => this.handleMouseOver(i)} >
+      <div>
         <img className={"user-image"} src={item.avatar_url} alt={item.login} />
         <div className={"name"}>
           {item.login}
         </div>
       </div>
-    )
+    );
   };
 
-  handleEnter = (login) => {
-    window.location.href = `https://github.com/${login}`;
-  }
+
 
   render() {
     return (
       <div className="App">
-        <UserSerach renderItem={this.renderItem} getData={this.getUsers} data={this.state.data} handleEnter={this.handleEnter}></UserSerach>
+        <UserSerach renderContent={this.renderContent} getData={this.getUsers} ></UserSerach>
         <div>fasdfsadf</div>
       </div>
     );

@@ -11,6 +11,7 @@ export default class UserSearch extends React.Component {
     this.state = {
       selected: '',
       searchTerm: '',
+      displayItems: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,8 +26,8 @@ export default class UserSearch extends React.Component {
 
   handleKeyPress = (event) => {
     const { key } = event;
-    const { data } = this.props;
-    const itemCount = data.length;
+    const { displayItems } = this.state;
+    const itemCount = displayItems.length;
     //debugger;
     console.log("itemcount: ", itemCount);
     const { selected } = this.state;
@@ -46,9 +47,20 @@ export default class UserSearch extends React.Component {
       }
     }
     else if(key === "Enter"){
-      this.props.handleEnter(this.props.data[this.state.selected].login);
+      //check if an item is selected and available
+
       //redirect to user profile
+      this.openProfile(this.state.selected);
     }
+  }
+
+  openProfile = (selected) => {
+    window.location.href = `https://github.com/${this.state.displayItems[selected].login}`;
+  }
+
+  handleMouseEnter(index){
+    console.log('mouseEnter: ', index);
+    this.setState({selected: index});
   }
 
   handleChange = (event) => {
@@ -61,7 +73,9 @@ export default class UserSearch extends React.Component {
             //trigger search after a timeout, so not every keypress leads to a search
         clearTimeout(timeout);
         timeout = setTimeout(()=>{
-          getData(this.state.searchTerm);
+          getData(this.state.searchTerm, (data) => {
+            this.setState({displayItems: data});
+          });
           this.setState({selected: 0})
         }, 500);
       }else{
@@ -71,17 +85,26 @@ export default class UserSearch extends React.Component {
     }
   }
 
+  renderItem = (item, i, selected) => {
+    const { renderContent } = this.props;
+    let className = `user-item ${i===selected ? 'selected':''}`
+    console.log(className, i, selected);
+    return (
+      <div key={i} className={className} onMouseEnter={() => this.handleMouseEnter(i)} onClick={() => this.openProfile(i)} >
+        {renderContent(item)}
+      </div>
+    );
+  }
 
 
   render() {
     const { searchTerm } = this.state;
-    const { data, renderItem } = this.props;
     let classNames = ["search-entries"];
     classNames = classNames.concat(["empty"]);
     return (
       <div className={"search-bar"} onKeyUp={this.handleKeyPress.bind(this)}>
         <input type="text" value={searchTerm} onChange={this.handleChange.bind(this)} ref={(input) => { this.nameInput = input; }}/>
-        <div className={classNames.join(' ')}>{data.map((item, i) => renderItem(item, i, this.state.selected))}</div>
+        <div className={classNames.join(' ')}>{this.state.displayItems.map((item, i) => this.renderItem(item, i, this.state.selected))}</div>
       </div>
     );
   }

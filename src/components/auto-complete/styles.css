@@ -1,0 +1,52 @@
+.search-entries{
+    color:black;
+    position:absolute;
+    left:0;
+    border:1px darkgray solid;
+}
+
+.search-entries:empty{
+    display:none;
+}
+.search-bar {
+    padding-top:20px;
+    position:relative;
+    margin:auto;
+    width:200px;
+    text-align:left;
+}
+
+.search-bar input{
+    height:30px;
+    font-family: 'Courier New', Courier, monospace;
+    width:200px;
+    border-radius:5px;
+
+}
+.search-bar input:focus{
+    outline:none;
+    border-color:lightblue;
+}
+
+.search-bar label{
+    font-weight:bold;
+    font-size:smaller;
+}
+.autocomplete-item{
+    border-bottom:1px darkgray solid;
+    width:200px;
+    height:60px;
+    background-color:white;
+}
+.selected {
+    background-color:lightgray;
+}
+
+
+
+.error {
+    color:red;
+    font-weight:bold;
+    text-align:left;
+    position:relative;
+}

@@ -1,6 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Autocomplete Github-User-Search
+
+Install the project by typing 
+
+### `npm install`
 
 In the project directory, you can run:
 
@@ -17,52 +21,34 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Questions
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What do you like about your solution?
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+I like that the user can select the preferred User Profile either using Arrow-Keys<br>
+but also using the Mouse.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I like the possibility to reuse the Component with different data-aggregation and design.
 
-### `npm run eject`
+### What do you dislike about your solution?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I am not happy, that i didn't really work using TDD<br>
+I tested only one function, which i am not very proud of.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Also the styling-options are not as sophisticated as i would have liked.<br>
+The User of the AutoComplete-Component has the possibility to change and style<br>
+the content of the auto-complete-result-item, but he is not able to change the look<br>
+and feel of the search-input-field.<br>
+Also the background-color of the selected Item can not be changed (only if you change it in the source of the component)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### If you had a full day more to work on this, what would you improve?
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- More Test-Methods
+- Add a loading-Gif
+- Improve the visual design
+- Implement more styling-options
 
-## Learn More
+### If you would start from scratch now, what would you do differently?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I would go for a reusable component directly. It took me quite some time to refactor<br>
+it to be reusable.

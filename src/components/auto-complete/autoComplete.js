@@ -61,13 +61,15 @@ export default class AutoComplete extends React.Component {
     const { getData, count = 10 } = this.props;
     const { value } = event.target;
 
+    // cancel any request, if the user types more into the searchfield
+    clearTimeout(timeout);
+
     // the search-term has changed
     if(value !== this.state.searchTerm){
       this.setState({ searchTerm: value });
 
       // if 3 or more characters are in input-field, search for users
       if(value.length > 2){
-        clearTimeout(timeout);
         // trigger search after a timeout, so not every keypress leads to a search
         timeout = setTimeout(()=>{
           // get the data from the passed by data-function

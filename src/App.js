@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   getUsers = (searchTerm, itemsCallback, stateCallback) => {
-    const url = `https://api.github.com/search/users?q=${searchTerm}`;
+    const url = `https://api.github.com/search/users?q=${encodeURI(searchTerm)}`;
       axios.get(url)
       .then((response) => {
         // handle success

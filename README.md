@@ -41,6 +41,9 @@ the content of the auto-complete-result-item, but he is not able to change the l
 and feel of the search-input-field.<br>
 Also the background-color of the selected Item can not be changed (only if you change it in the source of the component)
 
+Finaly i would have liked to handle bad inputs of the user better, by checking for illegal<br> 
+characters and informing the user if this is the case
+
 ### If you had a full day more to work on this, what would you improve?
 
 - More Test-Methods
